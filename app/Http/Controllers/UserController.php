@@ -11,16 +11,16 @@ class UserController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Users/Index', [
-            'users' => User::all()->map(fn($user) => [
-                'id' => (string) $user->_id,
-                '_id' => (string) $user->_id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'role' => $user->role,
-                'permissions' => $user->permissions,
-            ]),
+        $users = User::paginate(10);
+        $users->getCollection()->transform(fn($user) => [
+            'id' => (string) $user->_id,
+            '_id' => (string) $user->_id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => $user->role,
+            'permissions' => $user->permissions,
         ]);
+        return Inertia::render('Users/Index', ['users' => $users]);
     }
 
     public function create()

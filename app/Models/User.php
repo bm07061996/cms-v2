@@ -20,6 +20,7 @@ class User extends Authenticatable
         'permissions',
         'reset_token',
         'reset_token_expires',
+        'last_login_at',
     ];
 
     protected $hidden = [
@@ -34,6 +35,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'permissions' => 'array',
+            'last_login_at' => 'datetime',
         ];
     }
 

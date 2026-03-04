@@ -27,7 +27,7 @@ export default function Create({ auth }) {
 
     return (
         <Layout user={auth.user}>
-            <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow max-w-2xl">
+            <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow">
                 <h2 className="text-xl sm:text-2xl font-bold mb-6 text-gray-900 dark:text-white">Create User</h2>
                 <form onSubmit={submit}>
                     <div className="mb-4">

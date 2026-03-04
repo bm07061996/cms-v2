@@ -34,6 +34,12 @@ export default function Layout({ children, user }) {
                             {!collapsed && <span className="ml-3">Settings</span>}
                         </Link>
                     )}
+                    {(user.role === 'admin' || user.permissions?.includes('settings')) && (
+                        <Link href="/secrets" className="flex items-center px-4 py-3 text-white hover:bg-gray-700 dark:hover:bg-gray-800">
+                            <span className="text-xl">🔑</span>
+                            {!collapsed && <span className="ml-3">Secrets</span>}
+                        </Link>
+                    )}
                     {(user.role === 'admin' || user.permissions?.includes('reports')) && (
                         <Link href="/reports" className="flex items-center px-4 py-3 text-white hover:bg-gray-700 dark:hover:bg-gray-800">
                             <span className="text-xl">📄</span>
@@ -69,6 +75,12 @@ export default function Layout({ children, user }) {
                                     <span className="ml-3">Settings</span>
                                 </Link>
                             )}
+                            {(user.role === 'admin' || user.permissions?.includes('settings')) && (
+                                <Link href="/secrets" className="flex items-center px-4 py-3 text-white hover:bg-gray-700">
+                                    <span className="text-xl">🔑</span>
+                                    <span className="ml-3">Secrets</span>
+                                </Link>
+                            )}
                             {(user.role === 'admin' || user.permissions?.includes('reports')) && (
                                 <Link href="/reports" className="flex items-center px-4 py-3 text-white hover:bg-gray-700">
                                     <span className="text-xl">📄</span>
@@ -98,7 +110,7 @@ export default function Layout({ children, user }) {
                         </Link>
                     </div>
                 </header>
-                <main className="p-4 sm:p-6">
+                <main className="p-4 sm:p-6 w-full">
                     {children}
                 </main>
             </div>
