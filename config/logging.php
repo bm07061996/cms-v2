@@ -33,7 +33,7 @@ return [
 
     'deprecations' => [
         'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
-        'trace' => env('LOG_DEPRECATIONS_TRACE', false),
+        'trace' => env('LOG_DEPRECATIONS_TRACE', false)
     ],
 
     /*
@@ -56,6 +56,7 @@ return [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),
             'ignore_exceptions' => false,
+            'permission' => 0766,
         ],
 
         'single' => [
@@ -63,6 +64,7 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
+            'permission' => 0766,
         ],
 
         'daily' => [
@@ -71,6 +73,7 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => env('LOG_DAILY_DAYS', 14),
             'replace_placeholders' => true,
+            'permission' => 0766,
         ],
 
         'slack' => [
@@ -80,6 +83,7 @@ return [
             'emoji' => env('LOG_SLACK_EMOJI', ':boom:'),
             'level' => env('LOG_LEVEL', 'critical'),
             'replace_placeholders' => true,
+            'permission' => 0766,
         ],
 
         'papertrail' => [
@@ -92,6 +96,7 @@ return [
                 'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
             ],
             'processors' => [PsrLogMessageProcessor::class],
+            'permission' => 0766,
         ],
 
         'stderr' => [
@@ -103,6 +108,7 @@ return [
                 'stream' => 'php://stderr',
             ],
             'processors' => [PsrLogMessageProcessor::class],
+            'permission' => 0766,
         ],
 
         'syslog' => [
@@ -110,21 +116,25 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER),
             'replace_placeholders' => true,
+            'permission' => 0766,
         ],
 
         'errorlog' => [
             'driver' => 'errorlog',
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
+            'permission' => 0766,
         ],
 
         'null' => [
             'driver' => 'monolog',
             'handler' => NullHandler::class,
+            'permission' => 0766,
         ],
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+            'permission' => 0766,
         ],
 
     ],
