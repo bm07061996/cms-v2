@@ -54,14 +54,14 @@ export default function PublicHeader({ showLogin = true }) {
 
                     <div className="flex flex-col items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-50/90 md:items-end">
                         <span>mail id: pssfpl@gmail.com</span>
-                        {/* {showLogin && (
+                        {showLogin && (
                             <Link
                                 href="/login"
                                 className="inline-flex items-center rounded-full border border-white/70 px-4 py-1 text-[11px] font-bold uppercase tracking-widest text-white hover:bg-white/10"
                             >
                                 Login
                             </Link>
-                        )} */}
+                        )}
                     </div>
                 </div>
 
